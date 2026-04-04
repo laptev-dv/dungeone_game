@@ -1,8 +1,9 @@
 extends Node2D
 
 @export var player_units: Array[Dictionary] = [
-	{"type": "knight", "count": 5, "stats": preload("res://Stats/Units/knight_stats.tres")},
-	{"type": "archer", "count": 10, "stats": preload("res://Stats/Units/archer_stats.tres")},
+	{"type": "knight", "count": 100, "stats": preload("res://Stats/Units/knight_stats.tres")},
+	{"type": "archer", "count": 100, "stats": preload("res://Stats/Units/archer_stats.tres")},
+	{"type": "thief", "count": 100, "stats": preload("res://Stats/Units/thief_stats.tres")},
 ]
 
 @export var card_scene: PackedScene = preload("res://Scenes/UI/card_ui.tscn")
@@ -15,9 +16,6 @@ var player_units_count: Dictionary = {}
 
 func _ready():
 	setup_cards()
-	
-	# Добавляем врагов в комнату
-	spawn_enemies()
 
 func setup_cards():
 	for i in range(player_units.size()):

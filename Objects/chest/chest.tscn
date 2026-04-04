@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmlterl7bfhi7"]
+
+[ext_resource type="Texture2D" uid="uid://l1o28qxyrjk7" path="res://Assets/Dungeon_Tileset.png" id="1_d0wva"]
+[ext_resource type="Script" path="res://Objects/chest/chest.gd" id="1_oaapk"]
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_oaapk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_d0wva")
+hframes = 10
+vframes = 10
+frame = 84

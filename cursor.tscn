@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3er0qlxp8oux"]
 
 [ext_resource type="Texture2D" uid="uid://c7554l4shlqha" path="res://Assets/square_up_down_4.png" id="1_etre1"]
-[ext_resource type="Script" path="res://Scenes/Game/cursor.gd" id="2_eg3vn"]
+[ext_resource type="Script" path="res://Scenes/Game/cursor.gd" id="2_g7prg"]
 
 [sub_resource type="Animation" id="Animation_y3mxp"]
 resource_name = "default"
@@ -44,7 +44,7 @@ _data = {
 [node name="Cursor" type="Sprite2D"]
 texture_filter = 1
 texture = ExtResource("1_etre1")
-script = ExtResource("2_eg3vn")
+script = ExtResource("2_g7prg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

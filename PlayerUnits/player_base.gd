@@ -35,16 +35,16 @@ func take_damage(amount: float):
 	if current_health <= 0:
 		_die()
 
-func find_closest_enemy() -> EnemyBase:
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	var closest: EnemyBase = null
+func find_closest_target(groupName: String):
+	var targets = get_tree().get_nodes_in_group(groupName)
+	var closest = null
 	var min_distance = INF
 	
-	for enemy in enemies:
-		var distance = global_position.distance_to(enemy.global_position)
+	for target in targets:
+		var distance = global_position.distance_to(target.global_position)
 		if distance < min_distance:
 			min_distance = distance
-			closest = enemy
+			closest = target
 	
 	return closest
 

@@ -7,7 +7,7 @@ func enter() -> void:
 
 func update(delta: float) -> void:
 	# Ищем врага
-	var enemy = character.find_closest_enemy()
+	var enemy = character.find_closest_target("enemies")
 	
 	if enemy:
 		var distance = character.global_position.distance_to(enemy.global_position)
