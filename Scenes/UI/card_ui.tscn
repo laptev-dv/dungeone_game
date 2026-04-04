@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://d11veqwl4cxr1"]
+
+[ext_resource type="Script" path="res://Scenes/UI/card_ui.gd" id="1_pv5wb"]
+
+[node name="CardUI" type="Panel" node_paths=PackedStringArray("unit_name_label", "count_label", "texture_rect")]
+custom_minimum_size = Vector2(120, 160)
+offset_right = 96.0
+offset_bottom = 120.0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_pv5wb")
+unit_name_label = NodePath("VBoxContainer/UnitNameLabel")
+count_label = NodePath("VBoxContainer/CountLabel")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="UnitNameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "name"
+
+[node name="CountLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "count"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

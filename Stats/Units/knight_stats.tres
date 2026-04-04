@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://dxw4udjfkv0fp"]
+
+[ext_resource type="Script" path="res://Stats/stats.gd" id="1_gp372"]
+
+[resource]
+script = ExtResource("1_gp372")
+speed = 100.0
+attack_range = 50.0
+damage = 10.0
+max_health = 100.0
+attack_cooldown = 1.0
+unit_name = "Knight"

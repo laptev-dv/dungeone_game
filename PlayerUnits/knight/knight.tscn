@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5dx865pvb1wb"]
+
+[ext_resource type="Resource" uid="uid://dxw4udjfkv0fp" path="res://Stats/Units/knight_stats.tres" id="1_oq611"]
+[ext_resource type="Texture2D" uid="uid://ovbcekmxofl5" path="res://Assets/Human-Worker-Red.png" id="2_4ydqq"]
+
+[sub_resource type="GDScript" id="GDScript_y6vep"]
+script/source = "extends PlayerBase
+
+func _ready():
+	super._ready()
+	# Можно добавить специфичные для рыцаря механики
+	# Например, дополнительная броня
+
+func special_ability():
+	# Временная неуязвимость
+	modulate = Color(0.5, 0.5, 1)
+	await get_tree().create_timer(2.0).timeout
+	modulate = Color.WHITE
+"
+
+[node name="Knight" type="CharacterBody2D"]
+script = SubResource("GDScript_y6vep")
+stats = ExtResource("1_oq611")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_4ydqq")
+hframes = 24
+vframes = 8
+frame = 5
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -40.0
+offset_right = 2.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true

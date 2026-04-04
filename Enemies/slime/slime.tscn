@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://3y174lyfn1jf"]
+
+[ext_resource type="Resource" uid="uid://co4d8o17e6lit" path="res://Stats/Enemies/slime_stats.tres" id="1_lk2tq"]
+[ext_resource type="Texture2D" uid="uid://mhp0wk50j1kn" path="res://Assets/Slime.png" id="2_ghsky"]
+
+[sub_resource type="GDScript" id="GDScript_w24dg"]
+script/source = "extends EnemyBase
+
+func _ready():
+	super._ready()
+	# Слизь медленнее, но с большим здоровьем
+	stats.speed = 50
+	stats.max_health = 150
+	current_health = stats.max_health
+
+func special_jump_attack():
+	# Эффект прыжка
+	var tween = create_tween()
+	tween.tween_property(self, \"position:y\", position.y - 50, 0.3)
+	tween.tween_property(self, \"position:y\", position.y, 0.3)
+"
+
+[node name="Slime" type="CharacterBody2D"]
+script = SubResource("GDScript_w24dg")
+stats = ExtResource("1_lk2tq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_ghsky")
+hframes = 14
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -40.0
+offset_right = 2.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
