@@ -7,6 +7,6 @@ script = ExtResource("1_q4fxl")
 speed = 120.0
 attack_range = 5.0
 damage = 1.0
-max_health = 10.0
+max_health = 100.0
 attack_cooldown = 1.2
 unit_name = "\"Slime\""
