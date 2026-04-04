@@ -33,7 +33,7 @@ func take_damage(amount: float):
 	health_bar.visible = true
 	
 	modulate = Color.RED
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.05).timeout
 	modulate = Color.WHITE
 	
 	if current_health <= 0:

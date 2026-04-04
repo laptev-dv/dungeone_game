@@ -70,3 +70,7 @@ func update_card_counter(unit_type: String):
 	for card in card_container.get_children():
 		if card.unit_type == unit_type:
 			card.update_count(player_units_count[unit_type])
+
+
+func _on_button_pressed():
+	spawn_enemies()

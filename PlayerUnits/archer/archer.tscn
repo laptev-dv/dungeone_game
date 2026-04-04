@@ -1,7 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://crthk3dkhusj2"]
+[gd_scene load_steps=10 format=3 uid="uid://crthk3dkhusj2"]
 
 [ext_resource type="Script" path="res://PlayerUnits/archer/archer.gd" id="1_v4slf"]
 [ext_resource type="Texture2D" uid="uid://ovbcekmxofl5" path="res://Assets/Human-Worker-Red.png" id="2_mqd7q"]
+[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="3_voo0t"]
+[ext_resource type="Script" path="res://PlayerUnits/archer/States/archer_idle_state.gd" id="4_3qnjc"]
+
+[sub_resource type="Animation" id="Animation_lvsxo"]
+resource_name = "move"
+length = 0.80001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_glhrg"]
+resource_name = "attack"
+length = 0.80001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_ca807"]
+resource_name = "idle"
+length = 0.80001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 11]
+}
+
+[sub_resource type="Animation" id="Animation_i4tq6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muug3"]
+_data = {
+"RESET": SubResource("Animation_i4tq6"),
+"attack": SubResource("Animation_glhrg"),
+"idle": SubResource("Animation_ca807"),
+"move": SubResource("Animation_lvsxo")
+}
 
 [node name="Archer" type="CharacterBody2D"]
 script = ExtResource("1_v4slf")
@@ -21,10 +96,23 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -40.0
-offset_right = 2.0
-offset_bottom = -13.0
+offset_left = -8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 0
+show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_voo0t")
+initial_state = NodePath("Initial")
+
+[node name="Initial" type="Node" parent="StateMachine"]
+script = ExtResource("4_3qnjc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_muug3")
+}
