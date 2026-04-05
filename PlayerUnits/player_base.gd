@@ -8,7 +8,8 @@ class_name PlayerBase
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var health_bar: ProgressBar = $HealthBar
-@onready var animation_player: AnimationPlayer = $AnimationPlayer  # НОВЫЙ УЗЕЛ
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent
 
 # Состояния
 var current_health: float

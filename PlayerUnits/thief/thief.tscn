@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dckbaisfpuktt"]
+[gd_scene format=3 uid="uid://dckbaisfpuktt"]
 
-[ext_resource type="Script" path="res://PlayerUnits/knight/knight.gd" id="1_2oi5c"]
+[ext_resource type="Script" uid="uid://c26o1gqx18xra" path="res://PlayerUnits/knight/knight.gd" id="1_2oi5c"]
 [ext_resource type="Texture2D" uid="uid://bwx0sj1omip80" path="res://Assets/Archer-Green.png" id="2_4hshd"]
-[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="3_x5831"]
-[ext_resource type="Script" path="res://PlayerUnits/thief/States/thief_idle_state.gd" id="4_d2xpb"]
+[ext_resource type="Script" uid="uid://bbnbgs6uhe3rb" path="res://Scripts/state_machine.gd" id="3_x5831"]
+[ext_resource type="Script" uid="uid://cv7cw76l0364c" path="res://PlayerUnits/thief/States/thief_idle_state.gd" id="4_d2xpb"]
 
 [sub_resource type="Animation" id="Animation_7bhcb"]
 length = 0.001
@@ -89,11 +89,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rdrn3"]
 _data = {
-"RESET": SubResource("Animation_7bhcb"),
-"attack": SubResource("Animation_t4enx"),
-"idle": SubResource("Animation_qtobe"),
-"loot": SubResource("Animation_nhau7"),
-"move": SubResource("Animation_bh0rb")
+&"RESET": SubResource("Animation_7bhcb"),
+&"attack": SubResource("Animation_t4enx"),
+&"idle": SubResource("Animation_qtobe"),
+&"loot": SubResource("Animation_nhau7"),
+&"move": SubResource("Animation_bh0rb")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xn55s"]
@@ -102,31 +102,29 @@ bg_color = Color(0.180005, 0.180005, 0.180005, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1y52"]
 bg_color = Color(0.333032, 0.628906, 0.167053, 1)
 
-[node name="Thief" type="CharacterBody2D"]
+[node name="Thief" type="CharacterBody2D" unique_id=2144852975]
 script = ExtResource("1_2oi5c")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_rdrn3")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=820145974]
+libraries/ = SubResource("AnimationLibrary_rdrn3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1139645219]
 texture_filter = 1
 texture = ExtResource("2_4hshd")
 hframes = 24
 vframes = 8
 frame = 5
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1952891018 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_x5831")
 initial_state = NodePath("Initial")
 
-[node name="Initial" type="Node" parent="StateMachine"]
+[node name="Initial" type="Node" parent="StateMachine" unique_id=1553742142]
 script = ExtResource("4_d2xpb")
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="." unique_id=1659304819]
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1265125545]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -143,3 +141,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_i1y52")
 value = 60.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=2116780874]
+debug_enabled = true
