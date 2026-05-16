@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://doq418f1ulyt"]
+[gd_scene load_steps=9 format=3 uid="uid://doq418f1ulyt"]
 
-[ext_resource type="Script" uid="uid://dp4jubrwnb6mh" path="res://Scenes/Game/game.gd" id="1_j0ocd"]
+[ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_j0ocd"]
 [ext_resource type="PackedScene" uid="uid://cmlterl7bfhi7" path="res://Objects/chest/chest.tscn" id="1_xeiqk"]
 [ext_resource type="Texture2D" uid="uid://l1o28qxyrjk7" path="res://Assets/Dungeon_Tileset.png" id="2_dtyfc"]
 [ext_resource type="PackedScene" uid="uid://3y174lyfn1jf" path="res://Enemies/slime/slime.tscn" id="3_5ngs3"]
@@ -10,6 +10,7 @@
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yyu4"]
@@ -120,9 +121,9 @@ texture = ExtResource("2_dtyfc")
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_5yyu4")
 
-[node name="Main" type="Node" unique_id=111903002]
+[node name="Main" type="Node"]
 
-[node name="TileMap" type="TileMap" parent="." unique_id=945543143]
+[node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_dl1iv")
 format = 2
@@ -131,14 +132,14 @@ layer_1/name = "Layer1"
 layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array(1048609, 0, 9, 1048613, 0, 9, 655404, 0, 9, 655386, 0, 9, 1179693, 65536, 268435465, 655397, 0, 9, 655393, 0, 9, 1376281, 65536, 9, 1179673, 65536, 9, 1441831, 458752, 7, 1114139, 458752, 7, 1179681, 524288, 6, 1245216, 524288, 6, 1114155, 524288, 6, 786466, 524288, 6, 1179692, 589824, 3, 1507353, 589824, 5, 720921, 589824, 5, 655395, 262144, 7, 1114143, 262144, 6, 1114137, 262144, 6, 1048615, 327680, 6, 1441829, 524288, 6, 1114157, 262144, 268435462, 852007, 262144, 268435462, 851995, 262144, 268435462)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=213763621]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(250, 125)
 anchor_mode = 0
 zoom = Vector2(2, 2)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=566085707]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="CardContainer" type="HBoxContainer" parent="UI" unique_id=33163810]
+[node name="CardContainer" type="HBoxContainer" parent="UI"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -153,51 +154,51 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 theme_override_constants/separation = 24
 
-[node name="Button" type="Button" parent="UI/CardContainer" unique_id=1274909290]
+[node name="Button" type="Button" parent="UI/CardContainer"]
 custom_minimum_size = Vector2(240, 2.08165e-12)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Respawn"
 
-[node name="CardContainer" type="HBoxContainer" parent="UI/CardContainer" unique_id=2137202306]
+[node name="CardContainer" type="HBoxContainer" parent="UI/CardContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Game" type="Node2D" parent="." unique_id=1814332136]
+[node name="Game" type="Node2D" parent="."]
 script = ExtResource("1_j0ocd")
 
-[node name="GameWorld" type="Node2D" parent="Game" unique_id=1792317528]
+[node name="GameWorld" type="Node2D" parent="Game"]
 
-[node name="Slime3" parent="Game/GameWorld" unique_id=942336163 instance=ExtResource("3_5ngs3")]
+[node name="Slime3" parent="Game/GameWorld" instance=ExtResource("3_5ngs3")]
 position = Vector2(425, 295)
 
-[node name="Slime4" parent="Game/GameWorld" unique_id=1402704103 instance=ExtResource("3_5ngs3")]
+[node name="Slime4" parent="Game/GameWorld" instance=ExtResource("3_5ngs3")]
 position = Vector2(424, 344)
 
-[node name="Slime5" parent="Game/GameWorld" unique_id=1579293738 instance=ExtResource("3_5ngs3")]
+[node name="Slime5" parent="Game/GameWorld" instance=ExtResource("3_5ngs3")]
 position = Vector2(515, 290)
 
-[node name="Slime6" parent="Game/GameWorld" unique_id=1093841418 instance=ExtResource("3_5ngs3")]
+[node name="Slime6" parent="Game/GameWorld" instance=ExtResource("3_5ngs3")]
 position = Vector2(517, 368)
 
-[node name="Slime7" parent="Game/GameWorld" unique_id=699537281 instance=ExtResource("3_5ngs3")]
+[node name="Slime7" parent="Game/GameWorld" instance=ExtResource("3_5ngs3")]
 position = Vector2(618, 370)
 
-[node name="Slime8" parent="Game/GameWorld" unique_id=368821134 instance=ExtResource("3_5ngs3")]
+[node name="Slime8" parent="Game/GameWorld" instance=ExtResource("3_5ngs3")]
 position = Vector2(618, 289)
 
-[node name="Slime9" parent="Game/GameWorld" unique_id=495221850 instance=ExtResource("3_5ngs3")]
+[node name="Slime9" parent="Game/GameWorld" instance=ExtResource("3_5ngs3")]
 position = Vector2(531, 199)
 
-[node name="Slime10" parent="Game/GameWorld" unique_id=391732558 instance=ExtResource("3_5ngs3")]
+[node name="Slime10" parent="Game/GameWorld" instance=ExtResource("3_5ngs3")]
 position = Vector2(609, 198)
 
-[node name="Chest" parent="Game/GameWorld" unique_id=604189447 instance=ExtResource("1_xeiqk")]
+[node name="Chest" parent="Game/GameWorld" instance=ExtResource("1_xeiqk")]
 position = Vector2(424, 200)
 
-[node name="Chest2" parent="Game/GameWorld" unique_id=860055357 instance=ExtResource("1_xeiqk")]
+[node name="Chest2" parent="Game/GameWorld" instance=ExtResource("1_xeiqk")]
 position = Vector2(710, 200)
 
-[node name="Cursor" parent="." unique_id=702391961 instance=ExtResource("3_r3axu")]
+[node name="Cursor" parent="." instance=ExtResource("3_r3axu")]
 
 [connection signal="pressed" from="UI/CardContainer/Button" to="Game" method="_on_button_pressed"]
